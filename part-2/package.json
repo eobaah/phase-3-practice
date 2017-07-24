@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app",
     "test": "mocha --compilers js:babel-core/register ./database_test.js",
-    "run": "psql grocery_store < schema.sql && psql grocery_store < load-data.sql"
+    "db:init": "createdb grocery_store && psql grocery_store < schema.sql && psql grocery_store < load-data.sql"
   },
   "author": "",
   "license": "MIT",
