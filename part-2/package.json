@@ -4,17 +4,25 @@
   "description": "",
   "main": "database.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app",
+    "test": "mocha --compilers js:babel-core/register ./database_test.js",
+    "run": "psql grocery_store < schema.sql && psql grocery_store < load-data.sql"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "pg-promise": "^6.3.5",
+    "pg-promise ": "^6.3.5",
     "postgresql": "0.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.6.0",
-    "chai": "^4.1.0"
+    "body-parser": "^1.17.2",
+    "chai": "^4.1.0",
+    "chai-change": "^2.1.2",
+    "chai-http": "^3.0.0",
+    "nodemon": "^1.11.0"
   }
 }
