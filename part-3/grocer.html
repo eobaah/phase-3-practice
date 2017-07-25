@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grocer</title>
+
+    <link rel="stylesheet" href="grocer.css">
+  </head>
+  <body class="flex flex-column">
+    <header class="site-header flex flex-row-between">
+      <h1>Grocer</h1>
+      <button type="button" id="cart-button">
+        Cart
+        &nbsp;<span id="cart-item-count">(0)</span>
+      </button>
+    </header>
+    <div id="overlay"></div>
+    <div id="modal">
+      <div class="modal-header">
+        <h2>Cart</h2>
+        <div class="close-modal">X</div>
+      </div>
+      <div class="model-item-section">
+        <!-- <div class="modal-item modal-header">
+          <h3>Item name</h3>
+          <div class="modal-price" data-price="3.44">$3.44</div>
+        </div>
+        <div class="modal-item modal-header">
+          <h3>Item name</h3>
+          <div class="modal-price" data-price="3.44">$3.44</div>
+        </div>
+        <div class="modal-item modal-header">
+          <h3>Item name</h3>
+          <div class="modal-price" data-price="3.44">$3.44</div>
+        </div> -->
+      </div>
+      <div class="modal-footer modal-header">
+        <button>Clear</button>
+        <div class="modal-sum modal-header">
+          <h3>Total</h3>
+          <div class="modal-total" data-total="3.44">$3.44</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-full">
+      <div class="sidebar">
+        <ul>
+          <h4>Sections</h4>
+          <a href="#produce"><li>Produce</li></a>
+          <a href="#deli"><li>Deli</li></a>
+          <a href="#frozen"><li>Frozen</li></a>
+        </ul>
+      </div>
+      <div class="content">
+        <h1>Groceries</h1>
+        <ul class="item-section">
+          <h3 id="produce">Produce</h3>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Onions</span>
+            <span class="item-price">$1.11</span>
+            <button class="add-cart-btn" type="button" data-price="1.11" data-item={"Onions":"1.11"}>Add to cart</button>
+          </li>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Tomatoes</span>
+            <span class="item-price">$1.56</span>
+            <button class="add-cart-btn" type="button" data-item={"Tomatoes":"1.56"}>Add to cart</button>
+          </li>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Carrots</span>
+            <span class="item-price">$2.88</span>
+            <button class="add-cart-btn" type="button" data-item={"Carrots":"2.88"}>Add to cart</button>
+          </li>
+        </ul>
+
+        <ul class="item-section">
+          <h3 id="deli">Deli</h3>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Cold Cuts</span>
+            <span class="item-price">$1.47</span>
+            <button class="add-cart-btn" type="button" data-item={"Cold_Cuts":"1.47"}>Add to cart</button>
+          </li>
+        </ul>
+
+        <ul class="item-section">
+          <h3 id="frozen">Frozen</h3>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Orange Juice</span>
+            <span class="item-price">$2.52</span>
+            <button class="add-cart-btn" type="button" data-item={"Orange_Juice":"2.52"}>Add to cart</button>
+          </li>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Ice Cream</span>
+            <span class="item-price">$14.08</span>
+            <button class="add-cart-btn" type="button" data-item={"Ice_Cream":"14.08"}>Add to cart</button>
+          </li>
+          <li class="item flex flex-row-between">
+            <span class="item-name">Pizza</span>
+            <span class="item-price">$16.61</span>
+            <button class="add-cart-btn" type="button" data-item={"Pizza":"16.61"}>Add to cart</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
