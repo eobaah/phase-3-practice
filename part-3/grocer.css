@@ -120,25 +120,26 @@ body {
   background-color: rgb(255,255,255);
   display: flex;
   flex-direction: column;
-  visibility: hidden;
-  position: absolute;
-  left: 40%;
-  top: 25%;
-  width:30%;
   height:50%;
+  left: 40%;
+  position: absolute;
+  padding: 3%;
+  top: 25%;
   text-align:center;
+  visibility: hidden;
+  width:30%;
   z-index: 1000;
 }
 
 #overlay {
   background-color: rgba(0, 0, 0,.2);
-  visibility: hidden;
+  height:100%;
   position: absolute;
   left: 0%;
-  top: 0%;
-  width:100%;
-  height:100%;
   text-align:center;
+  top: 0%;
+  visibility: hidden;
+  width:100%;
   z-index: 500;
 }
 
@@ -150,4 +151,11 @@ body {
 .model-item-section {
   display: flex;
   flex-direction: column;
+}
+
+.model-item-section > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .5em;
 }
