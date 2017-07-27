@@ -1,18 +1,14 @@
-let addBtn = document.querySelectorAll('.add-cart-btn')
-let cartBtn = document.getElementById('cart-button')
-let closeBtn = document.querySelector('.close-modal')
-let clearBtn = document.querySelector('.clear-cart')
-let cartCounter = document.getElementById('cart-item-count')
+let addtoCartBtn = document.querySelectorAll( '.add-cart-btn' )
+let openCartBtn = document.getElementById( 'cart-button' )
+let closeBtn = document.querySelector( '.close-modal' )
+let clearBtn = document.querySelector( '.clear-cart' )
+let cartCounter = document.getElementById( 'cart-item-count' )
 let cart = document.getElementById( 'add-items-modal' )
-let cartTotal = document.getElementById( 'cart-item-count' )
-let modalTotal = document.querySelector('.modal-total')
+let modalTotal = document.querySelector( '.modal-total' )
 let cartArray = []
+let tempCartArray = []
 let cartItemsArr = []
 let cartPriceArr = []
-
-function increase() {
-  cartCounter.innerHTML = cartArray.length+1
-}
 
 function modal() {
   element = document.getElementById('modal');
@@ -22,70 +18,71 @@ function modal() {
 }
 
 function sumCartItems() {
-  cartTotal = cartPriceArr.reduce( (sum, item) => {
-    return sum + Number(item)
+  totalPrice = cartPriceArr.reduce( ( sum, item ) => {
+    return sum + Number( item )
   }, 0)
-  modalTotal.innerHTML = `$ ${cartTotal.toFixed(2)}`
-}
-
-function clearCart() {
-  emptyCartElements()
-  cartCounter.innerHTML = "(0)"
-  modalTotal.innerHTML = "$0.00"
-}
-
-
-function populateCart() {
-  cartArray.forEach( element => {
-    for ( var k in element ) {
-      cartItemsArr.push( k )
-      cartPriceArr.push( element[k] )
-    }
-  })
-  for( let index = 0; index < cartArray.length; index++) {
-    let itemPriceNode = document.createElement( 'DIV' );
-    let itemNameNode = document.createElement( 'SPAN' );
-    let priceNameNode = document.createElement( 'SPAN' );
-    let textNode = document.createTextNode( cartItemsArr[ index ] );
-    let priceNode = document.createTextNode( cartPriceArr[ index ] );
-    itemNameNode.appendChild( textNode );
-    priceNameNode.appendChild( priceNode );
-    itemPriceNode.appendChild( itemNameNode );
-    itemPriceNode.appendChild( priceNameNode );
-    cart.appendChild( itemPriceNode )
-  }
+  modalTotal.innerHTML = `$ ${totalPrice.toFixed( 2 )}`
 }
 
 function emptyCartElements() {
   cartArray = []
-  while (cart.hasChildNodes()) {
-      cart.removeChild(cart.firstChild);
+  while ( cart.hasChildNodes()) {
+    cart.removeChild( cart.firstChild );
   }
-  modalTotal.innerHTML = "$0.00"
 }
 
-addBtn.forEach( (target) => {
-  target.addEventListener('click', () => {
-      increase()
-  let item = JSON.parse(target.getAttribute('data-item'))
-  cartArray.push( item )
-  console.log( cartArray )
-  return cartArray
-  });
+function clearCart() {
+  emptyCartElements()
+  cartPriceArr = []
+  cartItemsArr = []
+  modalTotal.innerHTML = "$0.00"
+  cartCounter.innerHTML = cartItemsArr.length
+}
+
+addtoCartBtn.forEach( (element) => {
+    element.addEventListener( 'click', (element) => {
+      let itemDetailsObj = JSON.parse( element.target.dataset.item )
+      tempCartArray.push( itemDetailsObj )
+      cartArray.push( itemDetailsObj )
+
+      tempCartArray.forEach( element => {
+        for ( var key in element ) {
+          cartItemsArr.push( key )
+          cartPriceArr.push( element[key] )
+          let itemRow = document.createElement( 'DIV' );
+          cart.appendChild( itemRow );
+
+          let itemName = document.createElement( 'SPAN' );
+          itemRow.appendChild( itemName );
+          let itemText = document.createTextNode( key );
+          itemName.appendChild( itemText );
+
+          let itemPrice = document.createElement( 'SPAN' );
+          itemRow.appendChild( itemPrice );
+          let itemPriceNode = document.createTextNode( element[key] );
+          itemPrice.appendChild( itemPriceNode );
+
+          cartCounter.innerHTML = cartItemsArr.length
+        }
+      tempCartArray = []
+      })
+      let sumModalTotal = cartPriceArr.reduce( ( sum, item ) => {
+        return sum + Number( item )
+      },0)
+      modalTotal.innerHTML = `$ ${sumModalTotal.toFixed( 2 )}`
+    })
 });
 
 
-cartBtn.addEventListener('click', () => {
-  populateCart()
-  sumCartItems()
+openCartBtn.addEventListener( 'click', () => {
   modal()
 });
 
-closeBtn.addEventListener('click', (target) => {
+closeBtn.addEventListener( 'click', ( target ) => {
    modal()
 });
 
-clearBtn.addEventListener('click', () => {
-   clearCart()
+clearBtn.addEventListener( 'click', () => {
    modal()
+   clearCart()
 });
