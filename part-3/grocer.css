@@ -144,8 +144,13 @@ body {
 }
 
 .modal-header {
+  align-items: center;
   display: flex;
   justify-content: space-between;
+}
+.modal-header > div {
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .model-item-section {
@@ -158,4 +163,19 @@ body {
   flex-direction: row;
   justify-content: space-between;
   padding: .5em;
+}
+
+.modal-sum {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 2% 0;
+  width: 100%;
+}
+.modal-total {
+  padding: 0 0 0 20%;
+}
+
+button.clear-cart {
+  font: rgb(251, 251, 245);
+  background-color: rgba(0, 0, 0,0.3);
 }
