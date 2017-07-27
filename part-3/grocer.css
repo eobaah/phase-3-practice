@@ -174,7 +174,16 @@ body {
   padding: 0 0 0 20%;
 }
 
+.close-modal {
+  cursor: pointer;
+}
+
 button.clear-cart {
   font: rgb(251, 251, 245);
   background-color: rgba(0, 0, 0,0.3);
+}
+
+button {
+  cursor: pointer;
+  box-shadow: 2px 2px 1px rgb(0,0,0);
 }
