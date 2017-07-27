@@ -120,7 +120,6 @@ body {
   background-color: rgb(255,255,255);
   display: flex;
   flex-direction: column;
-  height:50%;
   left: 40%;
   position: absolute;
   padding: 3%;
